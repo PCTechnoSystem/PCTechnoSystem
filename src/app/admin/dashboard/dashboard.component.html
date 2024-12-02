@@ -1,0 +1,148 @@
+<div class="dashboard">
+  <!-- Sidebar -->
+  <button class="toggle-sidebar-button" (click)="toggleSidebar()">
+    {{ isSidebarCollapsed ? '➤' : '➤' }}
+  </button>
+  <div class="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <h2 *ngIf="!isSidebarCollapsed">Panel de Administración</h2>
+    <ul>
+      <li (click)="navigateTo('posts')" [class.active]="activeView === 'posts'">
+        <i class="fas fa-file-alt"></i>
+        <span *ngIf="!isSidebarCollapsed">Publicaciones</span>
+      </li>
+      <li (click)="navigateTo('contact')" [class.active]="activeView === 'contact'">
+        <i class="fas fa-address-book"></i>
+        <span *ngIf="!isSidebarCollapsed">Información de Contacto</span>
+      </li>
+      <li (click)="navigateTo('users')" [class.active]="activeView === 'users'">
+        <i class="fas fa-users"></i>
+        <span *ngIf="!isSidebarCollapsed">Usuarios</span>
+      </li>
+    </ul>
+    <button (click)="logout()" class="logout-button">
+      <i class="fas fa-sign-out-alt"></i>
+      <span *ngIf="!isSidebarCollapsed">Cerrar Sesión</span>
+    </button>
+  </div>
+  
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Bienvenido, {{ username }}</h1>
+
+    <!-- Publicaciones -->
+    <ng-container *ngIf="activeView === 'posts'">
+      <div class="section-header">
+        <h2>Gestión de Publicaciones</h2>
+        <button class="add-post-button" (click)="navigateToManagePost()">Agregar Publicación</button>
+      </div>
+      <div class="posts-grid">
+        <div *ngFor="let post of posts" class="post-card">
+          <div class="post-content">
+            <img [src]="imageUrl + post.image_url" alt="{{ post.title }}" />
+
+            <h3>{{ post.title }}</h3>
+            <p class="description">{{ post.description }}</p>
+            <p class="price">Precio: ${{ post.price }}</p>
+            <p class="author"><strong>Autor:</strong> {{ post.author || 'Desconocido' }}</p>
+          </div>
+          <div class="post-actions">
+            <button class="edit-button" (click)="navigateToManagePost(post)">Editar</button>
+            <button class="delete-button" (click)="confirmDelete(post.id)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+      
+    </ng-container>
+
+    <!-- Información de Contacto -->
+    <ng-container *ngIf="activeView === 'contact'">
+  <div class="contact-edit-container">
+    <h2><i class="fas fa-edit"></i> Editar Información de Contacto</h2>
+    <form (ngSubmit)="saveContactInfo()">
+      <div class="form-group">
+        <label for="phone"><i class="fas fa-phone"></i> Teléfono</label>
+        <input
+          id="phone"
+          type="text"
+          [(ngModel)]="contactInfo.phone"
+          name="phone"
+          placeholder="Ingresa el número de teléfono"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i> Correo Electrónico</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="contactInfo.email"
+          name="email"
+          placeholder="Ingresa el correo electrónico"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="address"><i class="fas fa-map-marker-alt"></i> Dirección</label>
+        <textarea
+          id="address"
+          [(ngModel)]="contactInfo.address"
+          name="address"
+          placeholder="Ingresa la dirección completa"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="save-button">
+        <i class="fas fa-save"></i> Guardar Información
+      </button>
+    </form>
+  </div>
+</ng-container>
+
+
+    <!-- Gestión de Usuarios -->
+    <ng-container *ngIf="activeView === 'users'">
+      <div class="section-header">
+        <h2>Gestión de Usuarios</h2>
+        <button class="add-post-button" (click)="openUserForm()">Agregar Usuario</button>
+      </div>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>
+              <button class="edit-button" (click)="openUserForm(user)">Editar</button>
+              <button class="delete-button" (click)="deleteUser(user.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Formulario para Agregar/Editar Usuario -->
+       <!-- Formulario de Usuario -->
+       <div *ngIf="showUserForm" class="form-modal">
+        <form (ngSubmit)="saveUser()">
+          <label for="username">Username</label>
+          <input id="username" type="text" [(ngModel)]="currentUser.username" name="username" required />
+          <label for="password">Contraseña</label>
+          <input
+            id="password"
+            type="password"
+            [(ngModel)]="currentUser.password"
+            name="password"
+            [required]="!currentUser.id"
+          />
+          <button type="submit">Guardar Usuario</button>
+          <button type="button" (click)="closeUserForm()">Cancelar</button>
+        </form>
+      </div>
+    </ng-container>
+  </div>
+</div>

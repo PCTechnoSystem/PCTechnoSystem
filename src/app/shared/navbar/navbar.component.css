@@ -1,0 +1,143 @@
+/* General Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #1e1e2f;
+  color: white;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styles */
+.navbar .logo a {
+  margin-left: 60px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar .logo a:hover {
+  color: #007bff;
+}
+
+/* Navigation Links */
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* User Info and Logout Button */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info span {
+  font-size: 1rem;
+}
+
+.logout-button {
+  padding: 8px 15px;
+  font-size: 1rem;
+  color: white;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #a71d2a;
+}
+
+/* Mobile Navbar Toggle */
+.navbar-toggle {
+  display: none;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .navbar .logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .navbar .nav-links.active {
+    display: flex;
+  }
+
+  .navbar .nav-links li {
+    width: 100%;
+  }
+
+  .navbar .nav-links a,
+  .logout-button {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .navbar-toggle {
+    display: block;
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,41 @@
+<div class="contact-us content-wrapper">
+  <h1>Contáctanos</h1>
+  <form (ngSubmit)="sendEmail()">
+    <div class="form-group">
+      <i class="fas fa-user"></i>
+      <input
+        id="name"
+        type="text"
+        [(ngModel)]="form.name"
+        name="name"
+        placeholder="Nombre"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-envelope"></i>
+      <input
+        id="email"
+        type="email"
+        [(ngModel)]="form.email"
+        name="email"
+        placeholder="Correo Electrónico"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-comment"></i>
+      <textarea
+        id="message"
+        [(ngModel)]="form.message"
+        name="message"
+        placeholder="Escribe tu mensaje aquí..."
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+</div>

@@ -1,0 +1,82 @@
+<div class="manage-post" style="margin-top: 80px;">
+
+  
+  <button class="back-button" (click)="goBack()">Volver</button>
+
+    <h1 class="manage-post-title">
+      {{ isEditMode ? 'Editar Publicación' : 'Crear Publicación' }}
+    </h1>
+  
+    <form (ngSubmit)="savePost()" enctype="multipart/form-data" class="manage-post-form">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input
+          id="title"
+          type="text"
+          [(ngModel)]="post.title"
+          name="title"
+          placeholder="Título"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea
+          id="description"
+          [(ngModel)]="post.description"
+          name="description"
+          placeholder="Descripción"
+          required
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="price">Precio</label>
+        <input
+          id="price"
+          type="number"
+          [(ngModel)]="post.price"
+          name="price"
+          placeholder="Precio"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="type">Tipo</label>
+        <select id="type" [(ngModel)]="post.type" name="type" (change)="updateSubtypes()" required>
+          <option value="" disabled selected>Selecciona un tipo</option>
+          <option value="product">Producto</option>
+          <option value="service">Servicio</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="subtype">Sub-tipo</label>
+        <select id="subtype" [(ngModel)]="post.subtype" name="subtype" required>
+          <option value="" disabled selected>Selecciona un sub-tipo</option>
+          <option *ngFor="let subtype of subtypes" [value]="subtype">{{ subtype }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="image">Imagen</label>
+        <input id="image" type="file" (change)="onFileSelected($event)" />
+      </div>
+
+
+      <div class="form-group">
+        <label for="author">Autor</label>
+          <select id="author" [(ngModel)]="post.author_id" name="author_id" required>
+            <option value="" disabled selected>Seleccione un autor</option>
+            <option *ngFor="let user of users" [value]="user.id">{{ user.username }}</option>
+          </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">
+        {{ isEditMode ? 'Actualizar' : 'Crear' }}
+      </button>
+    </form>
+  </div>
+  

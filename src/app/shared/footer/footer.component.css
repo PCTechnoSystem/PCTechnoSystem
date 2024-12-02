@@ -1,0 +1,89 @@
+/* General Footer Styles */
+.footer {
+  background-color: #1e1e2f;
+  color: white;
+  padding: 20px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.footer a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #0056b3;
+}
+
+/* Footer Top Section */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #444;
+  padding-bottom: 20px;
+}
+
+.footer-brand h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.footer-contact h3,
+.footer-social h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+/* Social Media Icons */
+.footer-social a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 1.5rem;
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);
+  color: #007bff;
+}
+
+/* Footer Map Section */
+.footer-map {
+  margin-top: 20px;
+}
+
+.footer-map iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  border-radius: 10px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-map iframe {
+    height: 250px;
+  }
+}

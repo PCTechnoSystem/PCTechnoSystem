@@ -1,0 +1,51 @@
+<div class="catalog content-wrapper">
+    <h1>Catálogo de Productos y Servicios</h1>
+  
+    <!-- Barra de búsqueda y filtros -->
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Buscar por título o descripción..."
+        (input)="applyFilters()"
+      />
+      <select [(ngModel)]="filterType" (change)="applyFilters()">
+        <option value="">Todos</option>
+        <option value="product">Productos</option>
+        <option value="service">Servicios</option>
+      </select>
+      <select *ngIf="filterType" [(ngModel)]="filterCategory" (change)="applyFilters()">
+        <option value="">Todos los {{ filterType === 'product' ? 'productos' : 'servicios' }}</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+  
+    <!-- Lista de productos y servicios -->
+    <div class="product-grid">
+      <div
+        *ngFor="let post of filteredPosts"
+        class="product-card"
+        (click)="openModal(post)"
+      >
+        <img [src]="imageUrl + post.image_url" alt="{{ post.title }}" />
+        <h3>{{ post.title }}</h3>
+        <p class="description">{{ post.description }}</p>
+        <p class="price">Precio: ${{ post.price }}</p>
+      </div>
+    </div>
+  
+    <p *ngIf="filteredPosts.length === 0">No hay publicaciones que coincidan con los filtros.</p>
+  
+    <!-- Modal -->
+    <div class="modal" *ngIf="selectedPost">
+      <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img [src]="imageUrl + selectedPost.image_url" alt="{{ selectedPost.title }}" />
+        <h2>{{ selectedPost.title }}</h2>
+        <p>{{ selectedPost.description }}</p>
+        <p class="price">Precio: ${{ selectedPost.price }}</p>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  

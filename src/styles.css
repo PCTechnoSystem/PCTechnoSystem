@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+/* Reset para eliminar padding y margin global */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Asegura que la navbar ocupe todo el ancho */
+  .navbar {
+    width: 100%;
+    margin: 0;
+    padding: 15px 20px;
+    box-sizing: border-box;
+  }
+  

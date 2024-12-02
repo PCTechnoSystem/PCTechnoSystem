@@ -1,0 +1,95 @@
+.contact-us {
+  margin-top: 100px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.contact-us h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2rem;
+  position: relative;
+}
+
+.contact-us h1::before {
+  position: absolute;
+  left: calc(50% - 1rem);
+  top: -40px;
+  font-size: 3rem;
+  color: #007bff;
+}
+
+.contact-us label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.contact-us .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.contact-us .form-group i {
+  color: #1e1e2f;
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.contact-us input,
+.contact-us textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.contact-us textarea {
+  resize: none;
+  height: 100px;
+}
+
+.contact-us button {
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1e1e2f;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-us button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.contact-us .form-group input:focus,
+.contact-us .form-group textarea:focus {
+  outline: none;
+  border-color: #1e1e2f;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+@media screen and (max-width: 768px) {
+  .contact-us h1 {
+    font-size: 1.5rem;
+  }
+
+  .contact-us button {
+    font-size: 1rem;
+  }
+}

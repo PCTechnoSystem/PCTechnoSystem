@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/">PCTechno System</a>
+  </div>
+  <button class="navbar-toggle" (click)="toggleMenu()">☰</button>
+  <ul class="nav-links" [class.active]="menuActive">
+    <li><a routerLink="/catalog" routerLinkActive="active">Catalog</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/admin/login" routerLinkActive="active">Login</a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+    </li>
+    <li *ngIf="isLoggedIn" class="user-info">
+      <span>Bienvenido, {{ username || 'Usuario' }}</span>
+      <button class="logout-button" (click)="logout()">Logout</button>
+    </li>
+  </ul>
+</nav>
